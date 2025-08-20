@@ -55,8 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // RESET salary
         if (e.target === resetButton) {
             removeSalaryFromLocalStorage();
-            expenses.length = 0;
-            renderExpenses();
             allocations.innerHTML = "";
             salary = 0;
         }
@@ -86,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
             saveExpensesToLocal();
             renderExpenses();
             updateTotal();
-            renderAllocations();
+            if (salary > 0) renderAllocations();
 
             expenseForm.reset(); // clear form
         }
@@ -179,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
             saveExpensesToLocal();
             renderExpenses();
             updateTotal();
-            renderAllocations(); // <-- FIX: update allocations after delete
+            if (salary > 0) renderAllocations();
         }
     });
 });
