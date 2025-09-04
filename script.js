@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "#salary-form button[type='button']"
     );
     const allocations = document.getElementById("allocations");
-
+    const resetConfirmation = document.querySelector(".reset-confirmation");
     // --------------------------
     // Expense Tracker Elements
     // --------------------------
@@ -23,6 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const expenseAmountInput = document.getElementById("expense-amount");
     const expenseList = document.getElementById("expense-list");
     const totalAmountDisplay = document.getElementById("total-amount");
+
+    // --------------------------
+    // Reset Confirmation Elements
+    // --------------------------
+    const confirmResetBtn = document.getElementById("confirm-reset");
+    const cancelResetBtn = document.getElementById("cancel-reset");
 
     // --------------------------
     // State (from localStorage)
@@ -53,10 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // RESET salary
-        if (e.target === resetButton) {
-            removeSalaryFromLocalStorage();
-            allocations.innerHTML = "";
-            salary = 0;
+        if (e.target === resetButton && salary > 0) {
+            resetConfirmation.style.display = "block";
         }
     });
 
@@ -164,6 +168,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function removeSalaryFromLocalStorage() {
         localStorage.removeItem("salary");
+    }
+
+    // --------------------------
+    // handle reset
+    // --------------------------
+    confirmResetBtn.addEventListener("click", () => handleReset("yes"));
+    cancelResetBtn.addEventListener("click", () => handleReset("no"));
+
+    function handleReset(choice) {
+        console.log(choice);
+        if (choice === "yes") {
+            removeSalaryFromLocalStorage();
+            allocations.innerHTML = "";
+            salary = 0;
+            expenseList.innerHTML = "";
+            expenses = [];
+            totalAmountDisplay.textContent = "0.00";
+            totalAmount = 0;
+            saveExpensesToLocal();
+        }
+        resetConfirmation.style.display = "none";
     }
 
     // --------------------------

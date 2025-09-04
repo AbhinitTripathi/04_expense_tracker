@@ -11,12 +11,13 @@ body {
     font-family: Arial, sans-serif;
     background-color: #121212;
     color: #ffffff;
+    padding: 30px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    flex-direction: column;
+    gap: 30px;
+    height: 100%;
 }
 
 h1,
@@ -27,10 +28,28 @@ h3 {
 }
 
 /* ==============================
+   Reset Confirmation Modal
+   ============================== */
+.reset-confirmation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none; /* Hidden by default */
+    text-align: center;
+}
+
+/* ==============================
    Container / Layout
    ============================== */
 .container {
-    width: 400px;
+    width: 90vw;
+    max-width: 400px;
     padding: 20px;
     background-color: #1e1e1e;
     border-radius: 10px;
