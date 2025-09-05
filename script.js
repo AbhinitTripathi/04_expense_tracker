@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // RESET salary
         if (e.target === resetButton && salary > 0) {
             resetConfirmation.style.display = "block";
+            document.querySelector(".main-content").classList.add("blur");
         }
     });
 
@@ -189,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
             saveExpensesToLocal();
         }
         resetConfirmation.style.display = "none";
+        document.querySelector(".main-content").classList.remove("blur");
     }
 
     // --------------------------

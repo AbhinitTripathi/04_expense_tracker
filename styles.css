@@ -7,7 +7,8 @@
     box-sizing: border-box;
 }
 
-body {
+body,
+.main-content {
     font-family: Arial, sans-serif;
     background-color: #121212;
     color: #ffffff;
@@ -18,6 +19,10 @@ body {
     flex-direction: column;
     gap: 30px;
     height: 100%;
+}
+
+.blur {
+    filter: blur(5px);
 }
 
 h1,
@@ -31,7 +36,7 @@ h3 {
    Reset Confirmation Modal
    ============================== */
 .reset-confirmation {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -42,6 +47,7 @@ h3 {
     z-index: 1000;
     display: none; /* Hidden by default */
     text-align: center;
+    z-index: 1;
 }
 
 /* ==============================
