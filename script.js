@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 type,
             };
 
-            expenses.unshift(newExpense);
+            expenses.push(newExpense);
             saveExpensesToLocal();
             renderExpenses();
             updateTotal();
@@ -100,7 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // --------------------------
     function renderExpenses() {
         expenseList.innerHTML = "";
-        expenses.forEach((data) => {
+        const n = expenses.length
+        for (let i = n-1; i >= 0; --i) {
+            const data = expenses[i];
             const li = document.createElement("li");
             li.innerHTML = `
                 <span>
@@ -110,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button data-id="${data.id}">Delete</button>
             `;
             expenseList.appendChild(li);
-        });
+        }
     }
 
     function renderAllocations() {
