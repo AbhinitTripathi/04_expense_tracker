@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 type,
             };
 
-            expenses.push(newExpense);
+            expenses.unshift(newExpense);
             saveExpensesToLocal();
             renderExpenses();
             updateTotal();
